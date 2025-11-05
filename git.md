@@ -2,16 +2,13 @@
 title: Git Daily
 ---
 
-// Tell Git who you are
-
-- git config --global user.name "Few Steps" [configure your Git user name]
-- git config --global user.email hellofewsteps@icloud.com [configure your Git email]
-
-// First Time Only
-
-- git init
-- git remote add origin <serve/urlr> [Connect to a remote repository]
-- git clone <remoteURL> [Clone remote to local [First Time Only]]
+- **Tell Git who you are**
+  - `git config --global user.name "Few Steps"` [configure your Git user name]
+  - `git config --global user.email hellofewsteps@icloud.com `[configure your Git email]
+- **First Time Only**
+- `git init`
+- `git remote add origin <serve/urlr>` [Connect to a remote repository]
+- `git clone <remoteURL> `[Clone remote to local [First Time Only]]
 
 // two ways to save
 
