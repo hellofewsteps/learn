@@ -6,19 +6,17 @@ title: Git Daily
   - `git config --global user.name "Few Steps"` [configure your Git user name]
   - `git config --global user.email hellofewsteps@icloud.com `[configure your Git email]
 - **First Time Only**
-- `git init`
-- `git remote add origin <serve/urlr>` [Connect to a remote repository]
-- `git clone <remoteURL> `[Clone remote to local [First Time Only]]
-
-// two ways to save
-
-- git add . [staging, ‘.’ means all]
-- git commit -m “comment or message” [committing]
-
-- git push origin <branchName> [master/develop] [push commits to remote]
-- git pull origin <branchName> [master/develop] [pull latest code from remote branch]
-- git merge <branchName> [merge a different branch into active branch]
-  - merge flow: [switchBranch] → [updateCode(active branch's)] → [merge other branch]
+  - `git init`
+  - `git remote add origin <serve/urlr>` [Connect to a remote repository]
+  - `git clone <remoteURL> `[Clone remote to local [First Time Only]]
+- **two ways to save**
+  - `git add .` [staging, ‘.’ means all]
+  - `git commit -m “comment or message”` [committing]
+- **Save to remote and update local**
+  - `git push origin <branchName>` [master/develop] [push commits to remote]
+  - `git pull origin <branchName>` [master/develop] [pull latest code from remote branch]
+  - `git merge <branchName>` [merge a different branch into active branch]
+    - merge flow: [switchBranch] → [updateCode(active branch's)] → [merge other branch]
 
 | Step | Command                | Purpose                 |
 | ---- | ---------------------- | ----------------------- |
@@ -26,29 +24,24 @@ title: Git Daily
 | 2️⃣   | git pull origin master | Update with latest code |
 | 3️⃣   | git merge develop      | Merge another branch    |
 
-// debugging
-
-- git status [show stage status]
-- git branch [show all branches and current branch]
-
-// branches
-
-- git checkout [] <branchName>
-  - [if ‘-b’: create new branch, empty: switch]
-- git push origin <branchname> [Push the branch to remote repository]
-- git push --all origin [push all branches to remote repository]
-- git branch -d <branchName> [-D: force delete local branch] [Delete local branch]
-- git push origin --delete dev2 [Delete remote branch]
-- git push origin :<branchname> [delete a branch on remote repository]
-
-// Undo local changes
-
-- git fetch origin [fetch latest history from remote]
-- git reset --hard origin/master [reset local branch to remote]
-- Explanation:
-  - You changed a file locally, and your teammate updated it on GitHub.
-  - `git fetch origin` gets your teammate’s update but doesn’t change your file.
-  - `git reset --hard origin/master` then deletes your version and makes your files match GitHub exactly.
+- **debugging**
+  - `git status` [show stage status]
+  - `git branch` [show all branches and current branch]
+- branches
+  - `git checkout [] <branchName>`
+    - [if ‘-b’: create new branch, empty: switch]
+  - `git push origin <branchname>` [Push the branch to remote repository]
+  - `git push --all origin` [push all branches to remote repository]
+  - `git branch -d <branchName>` [-D: force delete local branch] [Delete local branch]
+  - `git push origin --delete dev2` [Delete remote branch]
+  - `git push origin :<branchname>` [delete a branch on remote repository]
+- **Undo local changes**
+  - `git fetch origin` [fetch latest history from remote]
+  - `git reset --hard origin/master` [reset local branch to remote]
+  - Explanation:
+    - You changed a file locally, and your teammate updated it on GitHub.
+    - `git fetch origin` gets your teammate’s update but doesn’t change your file.
+    - `git reset --hard origin/master` then deletes your version and makes your files match GitHub exactly.
 
 | Step                                     | Command                          | Local `hello.txt` says    | Remote `hello.txt` says |
 | ---------------------------------------- | -------------------------------- | ------------------------- | ----------------------- |
@@ -58,15 +51,15 @@ title: Git Daily
 | You run `git fetch origin`               | `git fetch origin`               | "Hello from me"           | "Hello from teammate"   |
 | You run `git reset --hard origin/master` | `git reset --hard origin/master` | **"Hello from teammate"** | "Hello from teammate"   |
 
-- git diff [view all merge conflicts]
-- git diff --base <filename> [view conflicts against base file]
-- git diff <sourcebranch> <targetbranch> [preview changes before merging]
-- git tag 1.0.0 <commitID> [tag a specific commit]
-- git log [view commit IDs]
+- **Others**
+  - git diff [view all merge conflicts]
+  - git diff --base <filename> [view conflicts against base file]
+  - git diff <sourcebranch> <targetbranch> [preview changes before merging]
+  - git tag 1.0.0 <commitID> [tag a specific commit]
+  - git log [view commit IDs]
+- **Search**
 
-// Search
-
-- git grep "foo()" [search working directory for a string]
+  - git grep "foo()"` [search working directory for a string]
 
 - **git stash**: is a temporary storage feature in Git — it lets you save your uncommitted changes (like edited files) without committing them and return to a clean working directory.
 
