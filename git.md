@@ -2,79 +2,11 @@
 title: Git Daily
 ---
 
-// tell git who you are
-
-- git config --global user.name "Sam Smith" [set your username]
-- git config --global user.email sam@example.com [set your email]
-
-// create a new local repository
-
-- git init [initialize repository]
-
-// check out a repository
-
-- git clone /path/to/repository [clone local repo]
-- git clone username@host:/path/to/repository [clone from remote repo]
-
-// add files
-
-- git add <filename> [stage specific file]
-- git add . [stage all files]
-
-// commit changes
-
-- git commit -m "commit message" [commit staged files]
-- git commit -a [commit all modified and tracked files]
-
-// push changes
-
-- git push origin master [push commits to master branch]
-
-// check status
-
-- git status [show changed and staged files]
-
-// connect to a remote repository
-
-- git remote add origin <server> [add remote repository]
-- git remote -v [list remotes]
-
-// branches
-
-- git checkout -b <branchname> [create and switch to new branch]
-- git checkout <branchname> [switch branches]
-- git branch [list branches]
-- git branch -d <branchname> [delete branch]
-- git push origin <branchname> [push branch to remote]
-- git push --all origin [push all branches]
-- git push origin :<branchname> [delete remote branch]
-
-// update from remote repository
-
-- git pull [fetch and merge from remote]
-- git merge <branchname> [merge branch into current branch]
-- git diff [view changes]
-- git diff --base <filename> [compare with base file]
-- git diff <sourcebranch> <targetbranch> [compare branches]
-- git add <filename> [mark resolved after conflict]
-
-// tags
-
-- git tag 1.0.0 <commitID> [create tag]
-- git log [view commit history / get commitID]
-- git push --tags origin [push all tags to remote]
-
-// undo local changes
-
-- git checkout -- <filename> [revert file to last commit]
-- git fetch origin [get latest remote changes]
-- git reset --hard origin/master [reset local branch to remote]
-
-// search
-
-- git grep "foo()" [search repository for text or function]
-
 ```cmd
+
+// Tell Git who you are
+- git config --global user.name "Few Steps" [configure your Git user name]
+- git config --global user.email hellofewsteps@icloud.com [configure your Git email]
 
 // First Time Only
 - git init
@@ -83,14 +15,13 @@ title: Git Daily
 
 
 // two ways to save
-- git add . [staging, ‘.’ means all]
-- git commit -m “comment or message” [commiting]
+- git add .                          [staging, ‘.’ means all]
+- git commit -m “comment or message” [committing]
 
-- git push origin <branchName> [master/develop] [push commits to remote]
-- git pull origin <branchName> [master/develop] [pull latest code from remote branch]
-- git merge <branchName>. [merge a different branch into active branch]
-  - Flowchart:
-    - [switchBranch] → [updateCode(active branch's)] → [merge other branch]
+- git push origin <branchName>    [master/develop] [push commits to remote]
+- git pull origin <branchName>    [master/develop] [pull latest code from remote branch]
+- git merge <branchName>          [merge a different branch into active branch]
+  - merge flow: [switchBranch] → [updateCode(active branch's)] → [merge other branch]
 
 | Step | Command                | Purpose                 |
 | ---- | ---------------------- | ----------------------- |
@@ -99,15 +30,48 @@ title: Git Daily
 | 3️⃣   | git merge develop      | Merge another branch    |
 
 // debugging
-- git status [show stage staus]
-- git branch [show all branches and current branch]
+- git status    [show stage status]
+- git branch    [show all branches and current branch]
 
 // branches
 - git checkout [] <branchName>
-  - [if ‘-b’: create new branch, ‘-d’: delete, empty: switch]
-- git push origin <branchname>.     [Push the branch to your remote repository, so others can use it:]
-- git branch -d <branchName> [-D: force delete local branch] [Delete local branch]
-- git push origin --delete dev2 [Delete remote branch]
+  - [if ‘-b’: create new branch, empty: switch]
+- git push origin <branchname>     [Push the branch to remote repository]
+- git push --all origin            [push all branches to remote repository]
+- git branch -d <branchName>       [-D: force delete local branch] [Delete local branch]
+- git push origin --delete dev2    [Delete remote branch]
+- git push origin :<branchname>    [delete a branch on remote repository]
+
+
+// Undo local changes
+- git fetch origin                  [fetch latest history from remote]
+- git reset --hard origin/master    [reset local branch to remote]
+- Explanation:
+  - You changed a file locally, and your teammate updated it on GitHub.
+  - `git fetch origin` gets your teammate’s update but doesn’t change your file.
+  - `git reset --hard origin/master` then deletes your version and makes your files match GitHub exactly.
+
+| Step                                     | Command                          | Local `hello.txt` says    | Remote `hello.txt` says |
+| ---------------------------------------- | -------------------------------- | ------------------------- | ----------------------- |
+| Start                                    | —                                | "Hello World"             | "Hello World"           |
+| You edit                                 | —                                | "Hello from me"           | "Hello World"           |
+| Teammate pushes                          | —                                | "Hello from me"           | "Hello from teammate"   |
+| You run `git fetch origin`               | `git fetch origin`               | "Hello from me"           | "Hello from teammate"   |
+| You run `git reset --hard origin/master` | `git reset --hard origin/master` | **"Hello from teammate"** | "Hello from teammate"   |
+
+
+- git diff [view all merge conflicts]
+- git diff --base <filename> [view conflicts against base file]
+- git diff <sourcebranch> <targetbranch> [preview changes before merging]
+- git tag 1.0.0 <commitID> [tag a specific commit]
+- git log [view commit IDs]
+
+
+// Search
+- git grep "foo()" [search working directory for a string]
+
+
+
 
 ```
 
