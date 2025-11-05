@@ -2,6 +2,22 @@
 title: Git Daily
 ---
 
+| Git Task                       | Git Commands                                                                                                                                                                                                                                              |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tell Git who you are           | git config --global user.name "Sam Smith"<br>git config --global user.email sam@example.com                                                                                                                                                               |
+| Create a new local repository  | `bash\ngit init\n`                                                                                                                                                                                                                                        |
+| Check out a repository         | `bash\ngit clone /path/to/repository\n`\n`bash\ngit clone username@host:/path/to/repository\n`                                                                                                                                                            |
+| Add files                      | `bash\ngit add <filename>\n\ngit add *\n`                                                                                                                                                                                                                 |
+| Commit                         | `bash\ngit commit -m "Commit message"\n`\n`bash\ngit commit -a\n`                                                                                                                                                                                         |
+| Push                           | `bash\ngit push origin master\n`                                                                                                                                                                                                                          |
+| Status                         | `bash\ngit status\n`                                                                                                                                                                                                                                      |
+| Connect to a remote repository | git remote add origin <server><br>git remote -v                                                                                                                                                                                                           |
+| Branches                       | `bash\ngit checkout -b <branchname>\n`\n`bash\ngit checkout <branchname>\n`\n`bash\ngit branch\n`\n`bash\ngit branch -d <branchname>\n`\n`bash\ngit push origin <branchname>\n`\n`bash\ngit push --all origin\n`\n`bash\ngit push origin :<branchname>\n` |
+| Update from remote repository  | git pull<br>`bash\ngit merge <branchname>\n`\ngit diff<br>git diff --base <filename><br>`bash\ngit diff <sourcebranch> <targetbranch>\n`\n`bash\ngit add <filename>\n`                                                                                    |
+| Tags                           | `bash\ngit tag 1.0.0 <commitID>\n`\n`bash\ngit log\n`\n`bash\ngit push --tags origin\n`                                                                                                                                                                   |
+| Undo local changes             | `bash\ngit checkout -- <filename>\n`\n`bash\ngit fetch origin\n\ngit reset --hard origin/master\n`                                                                                                                                                        |
+| Search                         | git grep "foo()"                                                                                                                                                                                                                                          |
+
 ```cmd
 
 // First Time Only
