@@ -2,21 +2,77 @@
 title: Git Daily
 ---
 
-| Git Task                       | Git Commands                                                                                                                                                                                                                                              |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tell Git who you are           | git config --global user.name "Sam Smith"<br>git config --global user.email sam@example.com                                                                                                                                                               |
-| Create a new local repository  | `bash\ngit init\n`                                                                                                                                                                                                                                        |
-| Check out a repository         | `bash\ngit clone /path/to/repository\n`\n`bash\ngit clone username@host:/path/to/repository\n`                                                                                                                                                            |
-| Add files                      | `bash\ngit add <filename>\n\ngit add *\n`                                                                                                                                                                                                                 |
-| Commit                         | `bash\ngit commit -m "Commit message"\n`\n`bash\ngit commit -a\n`                                                                                                                                                                                         |
-| Push                           | `bash\ngit push origin master\n`                                                                                                                                                                                                                          |
-| Status                         | `bash\ngit status\n`                                                                                                                                                                                                                                      |
-| Connect to a remote repository | git remote add origin <server><br>git remote -v                                                                                                                                                                                                           |
-| Branches                       | `bash\ngit checkout -b <branchname>\n`\n`bash\ngit checkout <branchname>\n`\n`bash\ngit branch\n`\n`bash\ngit branch -d <branchname>\n`\n`bash\ngit push origin <branchname>\n`\n`bash\ngit push --all origin\n`\n`bash\ngit push origin :<branchname>\n` |
-| Update from remote repository  | git pull<br>`bash\ngit merge <branchname>\n`\ngit diff<br>git diff --base <filename><br>`bash\ngit diff <sourcebranch> <targetbranch>\n`\n`bash\ngit add <filename>\n`                                                                                    |
-| Tags                           | `bash\ngit tag 1.0.0 <commitID>\n`\n`bash\ngit log\n`\n`bash\ngit push --tags origin\n`                                                                                                                                                                   |
-| Undo local changes             | `bash\ngit checkout -- <filename>\n`\n`bash\ngit fetch origin\n\ngit reset --hard origin/master\n`                                                                                                                                                        |
-| Search                         | git grep "foo()"                                                                                                                                                                                                                                          |
+// tell git who you are
+
+- git config --global user.name "Sam Smith" [set your username]
+- git config --global user.email sam@example.com [set your email]
+
+// create a new local repository
+
+- git init [initialize repository]
+
+// check out a repository
+
+- git clone /path/to/repository [clone local repo]
+- git clone username@host:/path/to/repository [clone from remote repo]
+
+// add files
+
+- git add <filename> [stage specific file]
+- git add . [stage all files]
+
+// commit changes
+
+- git commit -m "commit message" [commit staged files]
+- git commit -a [commit all modified and tracked files]
+
+// push changes
+
+- git push origin master [push commits to master branch]
+
+// check status
+
+- git status [show changed and staged files]
+
+// connect to a remote repository
+
+- git remote add origin <server> [add remote repository]
+- git remote -v [list remotes]
+
+// branches
+
+- git checkout -b <branchname> [create and switch to new branch]
+- git checkout <branchname> [switch branches]
+- git branch [list branches]
+- git branch -d <branchname> [delete branch]
+- git push origin <branchname> [push branch to remote]
+- git push --all origin [push all branches]
+- git push origin :<branchname> [delete remote branch]
+
+// update from remote repository
+
+- git pull [fetch and merge from remote]
+- git merge <branchname> [merge branch into current branch]
+- git diff [view changes]
+- git diff --base <filename> [compare with base file]
+- git diff <sourcebranch> <targetbranch> [compare branches]
+- git add <filename> [mark resolved after conflict]
+
+// tags
+
+- git tag 1.0.0 <commitID> [create tag]
+- git log [view commit history / get commitID]
+- git push --tags origin [push all tags to remote]
+
+// undo local changes
+
+- git checkout -- <filename> [revert file to last commit]
+- git fetch origin [get latest remote changes]
+- git reset --hard origin/master [reset local branch to remote]
+
+// search
+
+- git grep "foo()" [search repository for text or function]
 
 ```cmd
 
