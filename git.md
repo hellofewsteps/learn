@@ -2,6 +2,8 @@
 title: Git Daily
 ---
 
+# Summary of git commands
+
 - **Tell Git who you are**
   - `git config --global user.name "Few Steps"` [configure your Git user name]
   - `git config --global user.email hellofewsteps@icloud.com `[configure your Git email]
@@ -87,7 +89,18 @@ title: Git Daily
 | **Public Gist** | Anyone can see it        | ✅ Yes                | Sharing code openly                 |
 | **Secret Gist** | Only those with the link | 🚫 No                 | Personal notes or sharing privately |
 
-Ref:
+# Origin
+
+- In Git, origin is the default name for the remote repository your local project is connected to. A remote is just a URL link to another copy of your repository (often on GitHub, GitLab, or Bitbucket). When you clone a repository, Git automatically creates this remote and names it origin.
+  | Command | What it Does |
+  | ----------------------------- | ------------------------------------------------------------------------------------ |
+  | `git fetch origin` | Downloads changes from the remote (but doesn’t merge them). |
+  | `git pull origin main` | Downloads and merges changes from the remote `main` branch into your current branch. |
+  | `git push origin main` | Uploads (pushes) your local `main` branch to the remote. |
+  | `git remote -v` | Shows all remotes and their URLs. |
+  | `git remote add origin <url>` | Connects your local repo to a new remote repository. |
+
+# Ref:
 
 - https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
 - github section of: https://gale.udemy.com/course/rest-api-automation-testing-rest-assured/learn/lecture/11793550#overview
