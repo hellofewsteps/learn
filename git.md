@@ -2,6 +2,11 @@
 title: Git Daily
 ---
 
+## VIM prompt ":"
+
+- :wq → save & quit
+- :q! → quit without saving
+
 # Summary of git commands
 
 - **Tell Git who you are**
