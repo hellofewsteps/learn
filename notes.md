@@ -1,7 +1,11 @@
 ## 🧰 Read JSON file (and also dynamically update the value if needed) in Your Test:
 
 ```java
+// Java 11+ style
+String jsonBody = Files.readString(Path.of("src/test/resources/bookingData.json"));
+// Works in Java 7+
 String jsonBody = new String(Files.readAllBytes(Paths.get("src/test/resources/bookingData.json")));
+
 jsonBody = jsonBody.replace("Jim", "John");
 
 given()
@@ -22,6 +26,13 @@ given()
 | `Paths.get()`             | Locates the file                        |
 | `new String(...)`         | Converts bytes to a readable string     |
 | `.replace("Jim", "John")` | Dynamically updates data before sending |
+
+| Method                  | Java Version | Reads Whole File  | Works Inside JAR | Handles Large Files Well | Simplicity |
+| ----------------------- | ------------ | ----------------- | ---------------- | ------------------------ | ---------- |
+| `Files.readString()`    | 11+          | ✅                | ❌               | ⚠️                       | ⭐⭐⭐⭐   |
+| `Files.readAllBytes()`  | 7+           | ✅                | ❌               | ⚠️                       | ⭐⭐⭐     |
+| `BufferedReader`        | All          | ❌ (line by line) | ❌               | ✅                       | ⭐⭐       |
+| `getResourceAsStream()` | All          | ✅                | ✅               | ⚠️                       | ⭐⭐⭐     |
 
 ## Sending File Attachments in Postman and Rest Assured
 
@@ -84,7 +95,7 @@ given()
 | **Keyword** | **Meaning in BDD style** | **Explanation**                                                           |
 | ----------- | ------------------------ | ------------------------------------------------------------------------- |
 | `given()`   | **Precondition**         | Setup step — define base URI, headers, request body, authentication, etc. |
-| `when()`    | **Action**               | Execute the HTTP request (GET, POST, PUT, DELETE).                        |
+| `when()`    | **Action**               | Execute the HTTP request (GET, POST, PUT, DELETE, FETCH).                 |
 | `then()`    | **Validation**           | Verify or assert the response (status code, response body, headers).      |
 
 🧠 **Mnemonic:**
