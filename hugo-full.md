@@ -7,14 +7,39 @@ title: 🚀 Hugo Setup from Beginning to End (Using YAML + Hugo Profile Theme)
 Open your terminal and run and Make sure it says **extended** — required for themes using SCSS.
 
 ```bash
+brew upgrade hugo                         # Update Hugo
+git submodule update --remote --merge     # Update theme
 brew install hugo                         # install
 hugo version                              # verify version
 hugo v0.133.1+extended darwin/arm64 ...   # Expected output:
 
-hugo new site . --format yaml             # Create a New Hugo Site
+hugo new site . --format yaml             # Create a New Hugo Site in root folder
+
+hugo new _index.md                        # create new phome page
+hugo new contact.md                       # create other pages
+
+
+# ----------------------------------------
+#     Add .gitignore first
+# ----------------------------------------
+
+git add .
+git commit -m "Initial Hugo site"
+git remote add origin https://github.com/yourname/mycoursesite.git
+git push origin main
+
+
+                                         # install theme: Papermod/Zen
+git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile
+
+
+hugo server       # Run locally
+hugo server -D    # Debug mode Run the local development server:
+hug build         # Build the project
+
 ```
 
-## Step 2: Add `.gitignore` file
+## Sample `.gitignore` file
 
 ```
 .DS_Store
@@ -28,79 +53,27 @@ node_modules/
 .firebase/
 ```
 
-## 🎨 Step 3: Add the Hugo Profile Theme
+## `hugo.yaml` file content
 
-Add the theme as a Git submodule:
+- PaperMod Ref: https://github.com/adityatelange/hugo-PaperMod/wiki/Installation
+- Zen Ref:
 
-```bash
-git init
-git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile
-```
-
-# Step 4: Add `hugo.yaml` file content
-
-- Ref: https://github.com/adityatelange/hugo-PaperMod/wiki/Installation
-
-## 🏗️ Step 5: Create Site Pages
-
-Create five main pages:
+## Sample content of the pages:
 
 ```bash
-hugo new _index.md
-hugo new contact.md
-hugo new udemy-coupons.md
-hugo new youtube-courses.md
-hugo new youtube-videos.md
-```
-
-Sample content of the pages:
-
-```
 ---
 title: "Home"
 draft: false
 ---
 ```
 
-## 💻 Step 6: Run the Site Locally
+## Deploy to Netlify
 
-```bash
-hugo server
-hugo server -D    # Debug mode Run the local development server:
-```
-
-## 🌐 Step 7: Deploy to Netlify
-
-### 1️⃣ Push the Site to GitHub
-
-```bash
-git add .
-git commit -m "Initial Hugo site"
-git remote add origin https://github.com/yourname/mycoursesite.git
-git push origin main
-```
-
-### 2️⃣ Create a Netlify Account
-
-Go to [https://app.netlify.com](https://app.netlify.com)
-→ Click **“Add New Site → Import from GitHub”**
-→ Select your repository.
-
-Set build settings:
-
-```
-Build command: hugo
-Publish directory: public
-```
-
-Then click **Deploy**.
-Netlify will build and host your site (e.g., [https://yourname.netlify.app](https://yourname.netlify.app)).
-
----
-
-## 🧾 Step 8: Add a `netlify.toml` File
-
-At the root of your project, create `netlify.toml` and add:
+- Go to [https://app.netlify.com](https://app.netlify.com)
+  → Click **“Add New Site → Import from GitHub”**
+  → Select your repository.
+- Then click **Deploy**.
+- At the root of your project, create `netlify.toml` and add:
 
 ```toml
 [build]
@@ -118,23 +91,6 @@ At the root of your project, create `netlify.toml` and add:
 
 [context.deploy-preview.environment]
   HUGO_ENV = "staging"
-```
-
-**Explanation:**
-
-- Enables garbage collection and minification
-- Uses the correct Hugo extended version
-- Sets environment variables for production and preview builds
-
----
-
-## 🧹 Maintenance Commands
-
-```bash
-brew upgrade hugo                              # Update Hugo
-git submodule update --remote --merge          # Update theme
-hugo new new-page.md                           # Add a new page
-hugo                                           # Rebuild for deploy
 ```
 
 ## Firebase Hosting/Deploy:
