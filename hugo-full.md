@@ -2,6 +2,16 @@
 title: 🚀 Hugo Setup from Beginning to End (Using YAML + Hugo Profile Theme)
 ---
 
+- [🧩 Step 1: Install Hugo (Extended Version)](#-step-1-install-hugo-extended-version)
+- [Sample `.gitignore` file](#sample-gitignore-file)
+- [`hugo.yaml` file content](#hugoyaml-file-content)
+- [Sample content of the pages:](#sample-content-of-the-pages)
+- [Deploy to Netlify](#deploy-to-netlify)
+- [Firebase Hosting/Deploy:](#firebase-hostingdeploy)
+- [Suggestion for modification](#suggestion-for-modification)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## 🧩 Step 1: Install Hugo (Extended Version)
 
 Open your terminal and run and Make sure it says **extended** — required for themes using SCSS.
@@ -22,6 +32,10 @@ hugo new contact.md                       # create other pages
 # ----------------------------------------
 #     Add .gitignore first
 # ----------------------------------------
+
+touch .gitignore                          # Create a .gitignore file
+nano .gitignore                           # Open it in the terminal editor (nano) to add entries
+
 
 git add .
 git commit -m "Initial Hugo site"
@@ -106,8 +120,9 @@ firebase deploy
 
 ## Suggestion for modification
 
+- [Hugo Commnity](https://discourse.gohugo.io/t/issue-with-hugo-site-links-after-deploying-to-netlify/56216)
+
 ```
-# https://discourse.gohugo.io/t/issue-with-hugo-site-links-after-deploying-to-netlify/56216
 
 1) Edit the .gitignore file in the root of your project. It should look something like this:
 
