@@ -2,42 +2,31 @@
 title: 🚀 Hugo Setup from Beginning to End (Using YAML + Hugo Profile Theme)
 ---
 
-This tutorial explains how to set up a **Hugo** static site from scratch using the **Hugo Profile** theme, a **YAML configuration file**, and **Netlify deployment**.
-
 ## 🧩 Step 1: Install Hugo (Extended Version)
 
-Open your terminal and run:
+Open your terminal and run and Make sure it says **extended** — required for themes using SCSS.
 
 ```bash
-brew install hugo
+brew install hugo                         # install
+hugo version                              # verify version
+hugo v0.133.1+extended darwin/arm64 ...   # Expected output:
+
+hugo new site . --format yaml             # Create a New Hugo Site
 ```
 
-Verify the installation:
-
-```bash
-hugo version
-```
-
-Expected output:
+## Step 2: Add `.gitignore` file
 
 ```
-hugo v0.133.1+extended darwin/arm64 ...
+.DS_Store
+Thumbs.db
+.hugo_build.lock
+hugo_stats.json
+public/
+resources/
+node_modules/
+.vscode/
+.firebase/
 ```
-
-Make sure it says **extended** — required for themes using SCSS.
-
----
-
-## 📁 Step 2: Create a New Hugo Site
-
-```bash
-hugo new site mycoursesite
-cd mycoursesite
-```
-
-This creates the Hugo project folder structure.
-
----
 
 ## 🎨 Step 3: Add the Hugo Profile Theme
 
@@ -48,57 +37,9 @@ git init
 git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile
 ```
 
----
+# Step 4: Add `hugo.yaml` file content
 
-## ⚙️ Step 4: Convert to YAML Configuration
-
-Replace the default TOML config with a YAML file:
-
-```bash
-mv config.toml config.yaml
-nano config.yaml
-```
-
-Paste the following content:
-
-```yaml
-baseURL: "https://example.com/"
-languageCode: "en-us"
-title: "My Courses Hub"
-theme: "hugo-profile"
-
-params:
-  author: "Your Name"
-  description: "My Udemy and YouTube Courses"
-  favicon: "images/favicon.png"
-
-  social:
-    youtube: "https://youtube.com/@YourChannel"
-    twitter: "https://twitter.com/YourProfile"
-    linkedin: "https://linkedin.com/in/YourProfile"
-
-menu:
-  main:
-    - name: "Home"
-      url: "/"
-      weight: 1
-    - name: "Udemy Coupons"
-      url: "/udemy-coupons/"
-      weight: 2
-    - name: "YouTube Courses"
-      url: "/youtube-courses/"
-      weight: 3
-    - name: "YouTube Videos"
-      url: "/youtube-videos/"
-      weight: 4
-    - name: "Contact"
-      url: "/contact/"
-      weight: 5
-```
-
-Save and close (`Ctrl + O`, `Enter`, `Ctrl + X`).
-
----
+- Ref: https://github.com/adityatelange/hugo-PaperMod/wiki/Installation
 
 ## 🏗️ Step 5: Create Site Pages
 
@@ -112,87 +53,21 @@ hugo new youtube-courses.md
 hugo new youtube-videos.md
 ```
 
-Then edit each file under the `content/` folder.
+Sample content of the pages:
 
-### content/\_index.md
-
-```markdown
+```
 ---
 title: "Home"
+draft: false
 ---
-
-# 👋 Welcome to My Courses Hub
-
-Here you’ll find all my courses, tutorials, and links to Udemy discounts and YouTube lessons.
 ```
-
-### content/contact.md
-
-```markdown
----
-title: "Contact Me"
----
-
-You can reach me via email at [you@example.com](mailto:you@example.com)  
-or on [LinkedIn](https://linkedin.com/in/yourprofile).
-```
-
-### content/udemy-coupons.md
-
-```markdown
----
-title: "Udemy Coupons"
----
-
-Here are my latest Udemy courses with active coupons:
-
-- [Python for Beginners](https://www.udemy.com/course/xyz/?couponCode=NOV25)
-- [Web Development Masterclass](https://www.udemy.com/course/abc/?couponCode=NOV25)
-```
-
-### content/youtube-courses.md
-
-```markdown
----
-title: "YouTube Courses"
----
-
-Watch my free full-length courses on YouTube:
-
-- [Full Python Bootcamp](https://www.youtube.com/watch?v=xxxxx)
-- [HTML & CSS Crash Course](https://www.youtube.com/watch?v=yyyyy)
-```
-
-### content/youtube-videos.md
-
-```markdown
----
-title: "YouTube Videos"
----
-
-Check out some of my shorter tutorials:
-
-- [Python Tips & Tricks](https://www.youtube.com/watch?v=zzzzz)
-- [Web Dev Setup on Mac](https://www.youtube.com/watch?v=wwwww)
-```
-
----
 
 ## 💻 Step 6: Run the Site Locally
 
-Run the local development server:
-
 ```bash
-hugo server -D
+hugo server
+hugo server -D    # Debug mode Run the local development server:
 ```
-
-Open your browser and go to:
-
-👉 [http://localhost:1313](http://localhost:1313)
-
-You’ll see the homepage and menu navigation.
-
----
 
 ## 🌐 Step 7: Deploy to Netlify
 
@@ -202,7 +77,7 @@ You’ll see the homepage and menu navigation.
 git add .
 git commit -m "Initial Hugo site"
 git remote add origin https://github.com/yourname/mycoursesite.git
-git push -u origin main
+git push origin main
 ```
 
 ### 2️⃣ Create a Netlify Account
@@ -255,45 +130,43 @@ At the root of your project, create `netlify.toml` and add:
 
 ## 🧹 Maintenance Commands
 
-| Task               | Command                                 |
-| ------------------ | --------------------------------------- |
-| Update Hugo        | `brew upgrade hugo`                     |
-| Update theme       | `git submodule update --remote --merge` |
-| Add a new page     | `hugo new new-page.md`                  |
-| Rebuild for deploy | `hugo`                                  |
-
----
-
-## 🧱 Folder Structure Overview
-
-```
-mycoursesite/
-├── config.yaml
-├── netlify.toml
-├── content/
-│   ├── _index.md
-│   ├── contact.md
-│   ├── udemy-coupons.md
-│   ├── youtube-courses.md
-│   └── youtube-videos.md
-├── themes/
-│   └── hugo-profile/
-└── public/   ← built site (after running `hugo`)
+```bash
+brew upgrade hugo                              # Update Hugo
+git submodule update --remote --merge          # Update theme
+hugo new new-page.md                           # Add a new page
+hugo                                           # Rebuild for deploy
 ```
 
----
+## Firebase Hosting/Deploy:
 
-## ✅ Summary
+```bash
+hugo
+npm install -g firebase-tools
+firebase login
+firebase init   #configure whatever needed
+hugo
+firebase deploy
+```
 
-You’ve now built a complete Hugo website from scratch using:
+## Suggestion for modification
 
-- **Hugo Extended**
-- **YAML-based configuration**
-- **Hugo Profile theme**
-- **Netlify for free hosting**
+```
+# https://discourse.gohugo.io/t/issue-with-hugo-site-links-after-deploying-to-netlify/56216
 
-Your site is ready to customize and publish!
+1) Edit the .gitignore file in the root of your project. It should look something like this:
 
----
+.DS_Store
+.hugo_build.lock
+hugo_stats.json
+node_modules/
+public/
+resources/
 
-Would you like me to make a **ready-to-use folder structure (ZIP)** of this tutorial’s project so you can start instantly?
+
+2) Remove the public directory (and other cruft) from source control and push changes:
+
+git rm -rf public/
+git rm .hugo_build.lock
+git rm .DS_Store
+git add -A && git commit -m "Cleanup repo" && git push
+```

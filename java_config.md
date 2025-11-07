@@ -49,7 +49,3 @@ title: Java
 
 - `java -version`
 - `echo %JAVA_HOME%`
-
-# Postman | Get Value from One API Response and Pass into Another API Request
-
-[Watch Tutorial on YouTube](https://www.youtube.com/watch?v=5PM4gyE-ZWM)

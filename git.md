@@ -105,6 +105,18 @@ title: Git Daily
   | `git remote -v` | Shows all remotes and their URLs. |
   | `git remote add origin <url>` | Connects your local repo to a new remote repository. |
 
+## Reset Git History and Push Hugo Site as New Project
+
+```bash
+rm -rf .git                                  # 1️⃣ Delete existing Git history
+git init                                     # 2️⃣ Reinitialize Git
+git add .                                    # 3️⃣ Add all files (except .gitignore files)
+git commit -m "Initial commit - fresh start" # 4️⃣ Commit as a fresh start
+git remote add origin <your-github-repo-url> # 5️⃣ Add GitHub remote
+git branch -M main                           # 6️⃣ Make sure branch is main
+git push -f origin main                      # 7️⃣ Force push to GitHub (overwrite history)
+```
+
 # Ref:
 
 - https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html

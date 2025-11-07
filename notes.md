@@ -149,4 +149,6 @@ given()
 | Jackson            | Serialization / Deserialization | Converts JSON ↔ Java Objects.                |
 | TestNG / JUnit     | Test Execution                  | Run and organize tests efficiently.          |
 
----
+# Postman | Get Value from One API Response and Pass into Another API Request
+
+[Watch Tutorial on YouTube](https://www.youtube.com/watch?v=5PM4gyE-ZWM)
