@@ -107,6 +107,8 @@ title: Git Daily
 
 ## Reset Git History and Push Hugo Site as New Project
 
+- delete .git and .gitsubmodule
+
 ```bash
 rm -rf .git                                  # 1️⃣ Delete existing Git history
 git init                                     # 2️⃣ Reinitialize Git
