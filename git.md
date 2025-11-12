@@ -1,5 +1,5 @@
 ---
-title: Git Daily
+title: Git Daily - Modified
 ---
 
 ## VIM prompt ":"
